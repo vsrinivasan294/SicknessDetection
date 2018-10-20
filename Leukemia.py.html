@@ -1,0 +1,44 @@
+
+# coding: utf-8
+
+# In[ ]:
+
+
+# Standard imports
+import cv2
+import numpy as np;
+params = cv2.SimpleBlobDetector_Params()
+params.minThreshold = 10;
+params.maxThreshold = 200;
+params.filterbyCircularity = True
+params.minCircularity = 0.1;
+params.maxCircularity = 0.8;
+# check for color of cell
+params.filterByColor = True
+params.minBlobColor = 10
+params.maxBlobColor = 200
+
+# check for convexity
+params.filterByConvexity = True
+params.minConvexity = 0.01
+params.maxConvexity = 0.95
+
+ver = (cv2.__version__).split('.')
+if int(ver[0]) < 3 :
+    detector = cv2.SimpleBlobDetector(params)
+else : 
+    detector = cv2.SimpleBlobDetector_create(params)
+    
+im = cv2.imread("Leukemia.jpg", cv2.IMREAD_GRAYSCALE)
+keypoints = detector.detect(im)
+im_with_keypoints = cv2.drawKeypoints(im, keypoints, np.array([]), (10,200,0), cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+
+numblobs = len(keypoints)
+
+print(numblobs)
+
+cv2.imshow("Keypoints", im_with_keypoints)
+cv2.waitKey(0)
+
+
+
