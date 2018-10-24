@@ -45,6 +45,8 @@ class App extends Component {
           <img src={HIV} className="Our-Technology" alt="HIV" />
           
         </header>
+        <footer className = "App-footer">
+        </footer>
       </div>
     );
   }

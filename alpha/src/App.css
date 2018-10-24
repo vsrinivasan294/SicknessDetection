@@ -22,9 +22,12 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding-bottom: 10vmin;
-}
+ }
 
+.App-footer {
+  background-color: #282c34;
+  height: 10vh;
+}
 
 @keyframes App-logo-spin {
   from {
