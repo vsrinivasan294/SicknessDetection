@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import FPM from './FPM.png';
 import Malaria from './Malaria.png';
 import SickleCell from './SickleCell.png';
+import HIV from './HIV.png';
 import './App.css';
 
 class App extends Component {
@@ -37,6 +38,11 @@ class App extends Component {
             SickleCell Detection. 
           </p>
           <img src={SickleCell} className="Our-Technology" alt="SickleCell" />
+
+          <p>
+            HIV Detection.
+          </p>
+          <img src={HIV} className="Our-Technology" alt="HIV" />
           
         </header>
       </div>
