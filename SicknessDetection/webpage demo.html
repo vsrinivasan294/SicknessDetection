@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<style>	
+  	body{
+		background: black;
+		margin: 0;
+  	}
+	.title{
+		text-align: center;
+		line-height: 100px;
+		font: Roboto;
+		color: white;
+		font-size: 80pt;
+		margin: 20% auto;
+		position: relative;
+	}
+	#main_title{
+		height: 218px;
+		width: 1000px;
+	}
+	#main{
+		top: 0px;
+		opacity: 0.5;
+		background-image: url(shutterstock_517874557.jpg);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		height: 100%;
+		width: 100%;
+		position: fixed;
+		-webkit-transition: all 0.4s ease; 
+		-moz-transition: all 0.4s ease; 
+		-ms-transition: all 0.4s ease; 
+		-o-transition: all 0.4s ease; transition: all 0.4s ease; 
+	}
+	#main:hover{
+		opacity: 0.25;
+		-webkit-transition: all 0.4s ease; 
+		-moz-transition: all 0.4s ease; 
+		-ms-transition: all 0.4s ease; 
+		-o-transition: all 0.4s ease; transition: all 0.4s ease; 
+	}
+	.button{
+		position: fixed;
+	}
+</style>
+
+<head>    
+	<meta charset="utf-8">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Sickness Detection</title>
+</head>
+
+<body>
+  	<div class="img" id="main">
+	</div>
+	<div class="title" id="main_title">
+		<a id="title">SICKNESS DETECTION</a>
+	</div>
+	<div class="buton" id="main_menu">
+		
+	</div>
+</body>
+</html>
