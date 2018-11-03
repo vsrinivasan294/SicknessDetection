@@ -9,14 +9,14 @@ params = cv2.SimpleBlobDetector_Params()
 
 # Change thresholds
 #params.minThreshold = 100
-params.maxThreshold = 230
+params.maxThreshold = 220
 
 params.minDistBetweenBlobs = 0
 
 # Filter by Area.
 params.filterByArea = True
-params.minArea = 500
-#params.maxArea = 2000
+params.minArea = 100
+params.maxArea = 500
 
 #Filter by Circularity
 #params.filterByCircularity = True
@@ -46,7 +46,7 @@ else :
 
 
 # Read image
-im = cv2.imread("Common Cold.jpg", cv2.IMREAD_GRAYSCALE)
+im = cv2.imread("Common Cold 2.jpg", cv2.IMREAD_GRAYSCALE)
 
 # Detect blobs.
 keypoints = detector.detect(im)
