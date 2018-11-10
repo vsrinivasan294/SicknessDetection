@@ -78,3 +78,41 @@ a.article-title:hover {
 .account-heading {
   font-size: 2.5rem;
 }
+
+.column  { 
+	padding: 10px 0px;
+	float:left; 
+	background-color:transparent; 
+}
+
+.full_size {
+	width:100%; 
+}
+
+.full_size img { 
+	padding: 10px 15px;
+	width:96.5%; 
+}
+
+.quarter_size {
+    margin-top: 65px;
+    width: 25%;
+    margin-bottom: 65px;
+}  
+
+.three_quarter_size{
+    width: 75%;
+    margin-top: 65px;
+    margin-bottom: 65px;
+}
+
+.half_size {
+	width: 50%; 
+}
+
+.divider {
+  height: 1px;
+	width: 100%;
+  overflow: hidden;
+  background-color: #e0e0e0;
+}
