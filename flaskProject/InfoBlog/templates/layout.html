@@ -31,8 +31,13 @@
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
+              {%  if current_user.is_authenticated %}
+                <a class="nav-item nav-link" href="{{  url_for('logout') }}">Logout</a>
+                <a class="nav-item nav-link" href="{{  url_for('account') }}">Account</a>
+              {%  else %}
               <a class="nav-item nav-link" href="{{  url_for('login') }}">Login</a>
               <a class="nav-item nav-link" href="{{  url_for('register') }}">Register</a>
+              {%  endif %}
             </div>
           </div>
         </div>
@@ -57,10 +62,10 @@
               <h3>Diseases</h3>
               <p class='text-muted'>Our algorithm has been optimized for these diseases
                 <ul class="list-group">
-                  <a class="list-group-item list-group-item-light" href="/HIV-Information">Malaria</a>
-                  <a class="list-group-item list-group-item-light" href="/HIV-Information">HIV</a>
-                  <a class="list-group-item list-group-item-light" href="/HIV-Information">Leukemia</a>
-                  <a class="list-group-item list-group-item-light" href="/HIV-Information">Sickle Cell</a>
+                  <a class="list-group-item list-group-item-light" href="/Malaria">Malaria</a>
+                  <a class="list-group-item list-group-item-light" href="/HIV">HIV</a>
+                  <a class="list-group-item list-group-item-light" href="/Leukemia">Leukemia</a>
+                  <a class="list-group-item list-group-item-light" href="/Sickle">Sickle Cell</a>
                 </ul>
               </p>
             </div>
