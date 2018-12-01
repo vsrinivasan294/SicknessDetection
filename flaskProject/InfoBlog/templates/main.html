@@ -6,7 +6,6 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
    <!-- Bootstrap CSS -->
-	 <link rel="shortcut icon" href="#" />
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
@@ -36,41 +35,17 @@
               <a class="nav-item nav-link" href="{{  url_for('login') }}">Login</a>
               <a class="nav-item nav-link" href="{{  url_for('register') }}">Register</a>
 							<a class="nav-item nav-link" id="sidebar_toggle">Toggle</a>
-							<!--<a class="nav-item nav-link" id="totop">Top</a>-->
             </div>
           </div>
         </div>
       </nav>
       </header>
-      <main role="main" class="container">
-        <div class="row">
-          <div class="col-md-8" id="main_text">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-              {% if messages %}
-                {% for category, message in messages %}
-                  <div class="alert alert-{{ category }}">
-                    {{ message }}
-                  </div>
-                {% endfor %}
-              {% endif %}
-            {%  endwith %}
-            {% block content %}{% endblock %}
-          </div>
-          <div class="col-md-4" id="sidebar">
-            <div class="content-section">
-              <h3>Diseases</h3>
-              <p class='text-muted'>Our algorithm has been optimized for these diseases
-                <ul class="list-group">
-                  <a class="list-group-item list-group-item-light" href="/Malaria-Information">Malaria</a>
-                  <a class="list-group-item list-group-item-light" href="/HIV-Information">HIV</a>
-                  <a class="list-group-item list-group-item-light" href="/Leukemia-Information">Leukemia</a>
-                  <a class="list-group-item list-group-item-light" href="/Sickle-Information">Sickle Cell</a>
-                </ul>
-							</p>
-            </div>
-          </div>
-        </div>
-      </main>
+		<div class="title" id="main_title">
+		<a id="title">SICKNESS DETECTION</a>
+	</div>
+	<div class="buton" id="main_menu">
+		
+	</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -79,28 +54,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 	
 		<script>
-			$(document).ready(function() {
-				var isHidden = false;
-				$('#sidebar_toggle').click(function() {
-					if (isHidden == false) {
-						document.getElementById('sidebar_toggle').innerHTML = "Show";
-						document.getElementById('sidebar').style.display = "none";
-						document.getElementById("main_text").className = "col-md-12";
-						isHidden = true;
-					} else {
-						document.getElementById('sidebar_toggle').innerHTML = "Toggle";
-						document.getElementById('sidebar').style.display = "block";
-						document.getElementById("main_text").className = "col-md-8";
-						isHidden = false;
-					}
-				});
-				$('#toov').click(function(){document.getElementById("ov").scrollIntoView()});
-        $('#toalg').click(function(){document.getElementById("alg").scrollIntoView()});
-        $('#todata').click(function(){document.getElementById("data").scrollIntoView()});
-        $('#topics').click(function(){document.getElementById("pics").scrollIntoView()});
-        $('#toetc').click(function(){document.getElementById("etc").scrollIntoView()});
-				$('#totop').click(function(){$(document.body).scrollTop(0)});
-			});
 		</script>
   </body>
 </html>

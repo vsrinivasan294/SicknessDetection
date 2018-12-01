@@ -20,6 +20,9 @@ posts = [
 ]
 
 @app.route("/")
+def main():
+		return render_template('main.html', title='Main')
+	
 @app.route("/home")
 def home():
     return render_template('home.html', posts=posts)
@@ -59,3 +62,15 @@ def login():
 @app.route("/HIV-Information")
 def HIV():
     return render_template('HIV-Information.html', title='Information')
+
+@app.route("/Leukemia-Information")
+def leukemia():
+    return render_template('Leukemia-Information.html', title='Information')
+	
+@app.route("/Malaria-Information")
+def malaria():
+    return render_template('Malaria-Information.html', title='Information')
+	
+@app.route("/Sickle-Information")
+def sickle():
+    return render_template('sickle-Information.html', title='Information')
