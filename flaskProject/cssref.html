@@ -1,0 +1,1039 @@
+<html> 
+
+    <style>
+
+     /********************************* DEFAULT WIKI SETTINGS  ********************************/
+
+	 #sideMenu, #top_title {display:none;}
+	 #content { padding:0px; width:100%; margin-top:65px; margin-left:-140px;} 
+	 body {background-color: white;}
+	 #bodyContent h1, #bodyContent h2, #bodyContent h3, #bodyContent h4, #bodyContent h5 { margin-bottom: 0px; }
+
+     /********************************* MENU ********************************/
+	 /* Wrapper for the menu */
+	 .menu_wrapper { 
+         overflow: scroll;
+		 width:240px; 
+		 height:100vh; 
+		 position:fixed; 
+		 float:left; 
+		 background-color:#009688; 
+		 text-align:left;
+         left: -250px;/*By Jason*/
+         top:0px;/*By Jason*/
+         z-index:3
+	 }
+
+	 /* styling for the menu items */
+	 .menu_item {
+		 width:100%; 
+		 margin:-2px 0px 0px -20px; 
+		 padding: 10px 10px;  
+		 border-top: 1px solid #E0E0E0; 
+		 border-bottom: 1px solid #E0E0E0;
+		 font-family: 'Roboto', Tahoma, sans-serif;
+		 font-weight:700;
+		 color:#212121; 
+		 cursor: pointer; 
+         list-style: none;
+	 }
+
+	 /* when hovering on a menu item */
+	 .menu_item:hover { 
+		 color:#dddddd; 
+		 background-color: #dddddd;
+	 }
+
+	 /* decoration icon for the menu buttons*/
+	 .icon {
+		 float:right;  
+		 font-size:10px; 
+		 font-weight:bold; 
+	 }
+	 
+	 /* this is the icon for when the content is collapsed */
+	 .plus::before {
+		 content: "˅";
+ 		 font-size: 14px;
+		 line-height: 40px;
+	 }
+	 /* this is the icon for when the content is expanded */
+	 .less::before {
+		 content: "˄"; 
+		 font-size: 14px;
+		 line-height: 40px;
+	 }	
+
+	 /* styling for the ul that creates the buttons */
+	 ul.menu_items {
+		 width:100%; 
+		 margin-left:0px; 
+		 padding:0px;
+		 list-style: none; 
+	 }
+
+	 /* styling for the li that are the menu items */
+	 .menu_items li { 
+		 width:90%; 
+		 margin-top:-2px; 
+		 padding: 15px 0px 15px 15px ; 
+		 display:block;
+		 border-bottom: 1px solid #d3d3d3;  
+		 text-align:left; 
+		 font-weight:bold;
+		 text-decoration:none; 
+		 color:#000000; 
+		 list-style-type:none; 
+		 cursor:pointer; 
+		 -webkit-transition: all 0.4s ease; 
+		 -moz-transition: all 0.4s ease; 
+		 -ms-transition: all 0.4s ease; 
+		 -o-transition: all 0.4s ease; transition: all 0.4s ease;  
+	 }
+
+	 .menu_item a {
+		 width: 100%;
+		 margin-left: -20px;
+		 padding: 11px 10px 12px 20px;
+		 font-family: 'Roboto', Tahoma, sans-serif;
+		 font-size: 14px;
+		 text-decoration: none;
+		 color:#212121;		
+	 }
+
+	 /* When hovering on a menu item */
+	 .menu_items li:hover { 
+		 background-color:#72c9b6;
+		 color: #dddddd;
+	 }
+
+	 /* styling for the submenus */
+	 .submenu {
+		 width:100%; 
+		 display: none;  
+		 font-weight:bold;
+		 cursor:pointer; 
+
+	 }
+
+	 /* moving the margin for the submenu ul list */
+	 ul.submenu { 
+		 width: 100%;
+		 margin: 10px 0px -11px 0px;
+		 list-style: none;
+	 }
+
+	 /*styling for the submenu buttons */
+	 .submenu li { 
+		 width: 100%; 
+		 margin-left: 10px;
+		 margin-bottom: 0px;
+	 }
+
+
+	 /* hover state for the submenu buttons */
+	 .submenu li a {
+		 width: 100%; 
+		 padding: 5px 10px; 
+		 display: inline-block;
+		 border-bottom: 1px solid #d3d3d3;
+		 background-color:white; 
+		 text-decoration:none;
+		 color:#000000; 
+	 }
+
+
+
+	 .submenu li a:hover  {
+		 background-color:#000000; 
+		 color: #eeeeee;
+	 }
+
+
+	 /* When the screen is smaller than 680px, the menu has the option to hide/show - this button controls that */
+	 .collapsable_menu_control { 
+		 width:100%; 
+		 padding: 15px 0px;
+		 display:none; 
+ 		 background-color:#000000; 
+		 text-align:center;  
+		 font-weight:bold; 
+		 color:#72c9b6;
+		 cursor:pointer; 
+		 -webkit-transition: all 0.4s ease; 
+		 -moz-transition: all 0.4s ease; 
+		 -ms-transition: all 0.4s ease; 
+		 -o-transition: all 0.4s ease; 
+		 transition: all 0.4s ease; 
+	 }
+
+	 /* when hovering on that button */
+	 .collapsable_menu_control:hover { 
+		 background-color: #72c9b6;
+		 color:#000000;  
+	 }
+
+     /********************************* CONTENT OF THE PAGE ********************************/
+
+	 /* Wrapper for the content */
+	 .content_wrapper {
+		 width: 85%;
+		 margin-left:240px;
+		 padding:10px 0px; 
+		 float:left; 
+		 background-color:transparent; 
+	 }
+
+	 /*LAYOUT */
+	 .column  { 
+		 padding: 10px 0px;
+		 float:left; 
+		 background-color:transparent; 
+	 }
+
+	 .full_size {
+		 width:100%; 
+	 }
+
+	 .full_size img { 
+		 padding: 10px 15px;
+		 width:96.5%; 
+	 }
+
+     .quarter_size {
+         margin-top: 65px;
+         width: 25%;
+         margin-bottom: 65px;
+     }
+     
+     .three_quarter_size{
+         width: 75%;
+         margin-top: 65px;
+         margin-bottom: 65px;
+     }
+     
+	 .half_size {
+		 width: 50%; 
+	 }
+	 .half_size img { 
+		 padding: 10px 15px;
+		 width: 93%; 
+	 }
+
+
+	 .clear {
+		 clear:both;
+	 }
+
+	 .highlight { 
+		 width: 90%; 
+		 margin: auto; 
+		 padding: 15px 5px;
+		 background-color: #f2f2f2; 
+	 }
+
+	 .judges-will-not-evaluate {
+		 border: 4px solid #72c9b6;
+		 display: block;
+		 margin: 5px 15px;
+		 width: 95%;
+		 font-weight:bold;
+	 }
+
+
+	 /*STYLING */
+
+	 /* styling for the titles */
+	 .content_wrapper h1, .content_wrapper h2 {
+		 padding:5px 15px; 
+		 border-bottom:0px; 
+		 color:#000000;
+		 font-family: 'Roboto', Tahoma, Geneva, sans-serif;
+
+	 }
+	 .content_wrapper h3, .content_wrapper h4, .content_wrapper h5, .content_wrapper h6 { 
+		 padding:5px 15px; 
+		 border-bottom:0px; 
+		 color: #000000;  
+		 font-family: 'Roboto', Tahoma, Geneva, sans-serif;
+	 }
+
+
+	 /* font and text */
+	 .content_wrapper p { 
+		 padding:0px 15px; 
+		 font-size: 20px;
+		 font-family: 'Roboto', Tahoma, Geneva, sans-serif; 
+	 }
+
+	 /* Links */
+	 .content_wrapper a { 
+         font-size:20px;
+         font-weight:600;
+         text-decoration:none;
+         color:black;
+	 }
+
+	 /* hover for the links 
+	 .content_wrapper a:hover { 
+	 text-decoration:none;
+	 color:#dddddd;
+	 }*/
+
+	 /* non numbered lists */
+	 .content_wrapper ul {
+		 padding:0px 20px;
+		 font-size: 13px;
+		 font-family: 'Roboto', Tahoma, Geneva, sans-serif; 
+	 }
+
+	 /* numbered lists */
+	 .content_wrapper ol {
+		 padding:0px; 
+		 font-size: 13px;
+		 font-family: 'Roboto', Tahoma, Geneva, sans-serif; 
+	 }
+
+	 /* Table */
+	 .content_wrapper table { 
+		 width: 97%; 
+		 margin:15px 10px; 
+		 border: 1px solid #d3d3d3; 
+		 border-collapse: collapse; 
+	 }
+
+	 /* table cells */
+	 .content_wrapper  td { 
+		 padding: 10px;
+		 vertical-align: text-top; 
+		 border: 1px solid #d3d3d3; 
+		 border-collapse: collapse; 
+	 }
+
+	 /* table headers */
+	 .content_wrapper th { 
+		 padding: 10px; 
+		 vertical-align: text-top; 
+		 border: 1px solid #d3d3d3; 
+		 border-collapse: collapse; 
+		 background-color:#f2f2f2; 
+	 }
+
+	 /* Button class */
+	 .button_click { 
+		 margin: 10px auto;
+		 padding: 15px; width:12%;  
+		 text-align:center; 
+		 font-weight:bold; 
+		 background-color: #72c9b6;
+		 cursor:pointer;  
+		 -webkit-transition: all 0.4s ease;
+ 		 -moz-transition: all 0.4s ease; 
+		 -ms-transition: all 0.4s ease; 
+		 -o-transition: all 0.4s ease; 
+		 transition: all 0.4s ease; 
+	 }
+
+	 /* button class on hover */
+	 .button_click:hover {  
+		 background-color:#eeeeee; 
+		 color:#009688;
+	 }
+     /********************************* ADDED BY JASON:) **********************************/
+     #whole_wrapper{
+         position: relative;
+         min-height: 100%;
+     }
+     #footbar{
+         -moz-box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.5); 
+         -webkit-box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.5);
+         margin-top: 16px;
+         padding: 0px 16px 0px 16px;
+         list-style: none;
+         height: 65px;
+         width:100%;
+         position:fixed;
+         display: block;
+         right:0;
+         background-color: #009688;
+         float: right;
+         top: 0px;
+         left: 0px;
+         z-index: 9998;
+     }
+     #footer{
+         height: 200px;
+         width:100%;
+         position: absolute;
+         left: 140px;
+         bottom: -10px;
+         background-color: #009688;
+         z-index: 1;
+     }
+     #logo{
+         width:100%; 
+		 margin:-2px 0px 0px -20px; 
+		 padding: 10px 10px;  
+		 border-top: 1px solid #e0f7fa;
+         height: 175px;
+         text-align: center;
+     }
+     .footbar_item{
+         margin-left: 6px;
+         /*float: right;*/
+         border: 1px;
+         /*width: 32%;*/
+         text-align: left;
+         line-height: 65px;
+	     font-family: 'Roboto', Tahoma, sans-serif;
+         font-size: 18px;
+         /*font-weight: bold;*/
+         color: white;
+     }
+     #placeholder{
+         width: 36%;
+         float: left;
+         height: 65px;
+         top: 11px;
+     }
+     #title_image{
+         text-align: center;
+         width: 28%;
+     }
+    .menu_div{
+        width: 30%;
+        margin-top: 60px;
+        margin-bottom: 30px;
+        padding-left: 20px;
+        border-left: 5px solid;
+        border-left-color: #009688;
+    }
+    .menu_div h5{
+        font-size: 15px;
+        color: darkgray;
+        padding-bottom: 10px;
+    }
+    .menu_div li{
+         list-style: none;
+    }
+     .menu_div li a{
+         font-size: 16px;
+         color: #009688;
+         cursor: pointer;
+     }
+        .attri{
+            margin-bottom: 65px;
+            margin-top: 65px;
+        }
+     #menu_button{
+         color: #ffffff;
+         cursor: pointer;
+         background-color: transparent;
+         margin: none;
+         float: left;
+         width: 4%;
+         height: 65px;
+         border: 0px;
+         text-align: center;
+         line-height: 65px;
+         -webkit-transition: all 0.4s ease; 
+		 -moz-transition: all 0.4s ease; 
+		 -ms-transition: all 0.4s ease; 
+		 -o-transition: all 0.4s ease; transition: all 0.4s ease; 
+     }
+     #menu_button:hover{
+         background-color: #00796B;
+         -webkit-transition: all 0.4s ease; 
+		 -moz-transition: all 0.4s ease; 
+		 -ms-transition: all 0.4s ease; 
+		 -o-transition: all 0.4s ease; transition: all 0.4s ease; 
+
+     }
+     #menu_button:active{
+         background-color: #00695C;
+         -webkit-transition: all 0.3s ease; 
+		 -moz-transition: all 0.2s ease; 
+		 -ms-transition: all 0.2s ease; 
+		 -o-transition: all 0.2s ease;
+                 transition: all 0.2s ease; 
+     }
+
+
+     #title_div{
+         width: 32%;
+         float: left;
+         height: 65px;
+         top: 11px;
+     }
+     #title{
+         color: white;
+         text-decoration: none;
+     }
+     #ca2{
+         position: fixed;
+         right: 10px;
+         bottom: -110px;
+         z-index: 9999;
+     }
+     .ca{
+         cursor: pointer;
+     }
+     #home{
+         background-color: #e57373;
+         -webkit-transition: all 0.4s ease;
+ 		 -moz-transition: all 0.4s ease; 
+		 -ms-transition: all 0.4s ease; 
+		 -o-transition: all 0.4s ease; 
+		 transition: all 0.4s ease; 
+         
+     }
+     #home:hover {
+         background-color: #F44336;
+     }
+
+     #team{
+         background-color: #f06292;
+         -webkit-transition: all 0.4s ease;
+ 	     -moz-transition: all 0.4s ease; 
+	     -ms-transition: all 0.4s ease; 
+	     -o-transition: all 0.4s ease; 
+	     transition: all 0.4s ease; 
+     }
+     #team:hover {
+         background-color: #E91E63;
+     }
+     #project{
+         background-color: #9575cd;
+         -webkit-transition: all 0.4s ease;
+ 		 -moz-transition: all 0.4s ease; 
+		 -ms-transition: all 0.4s ease; 
+		 -o-transition: all 0.4s ease; 
+		 transition: all 0.4s ease; 
+     }
+     #project:hover{
+         background-color: #673AB7;
+     }
+     #parts{
+         background-color: #64b5f6;
+         -webkit-transition: all 0.4s ease;
+ 		 -moz-transition: all 0.4s ease; 
+		 -ms-transition: all 0.4s ease; 
+		 -o-transition: all 0.4s ease; 
+		 transition: all 0.4s ease; 
+     }
+     #parts:hover{
+         background-color: #2196F3;
+     }
+     #safety{
+         background-color: #4DB6AC;
+         -webkit-transition: all 0.4s ease;
+ 		 -moz-transition: all 0.4s ease; 
+		 -ms-transition: all 0.4s ease; 
+		 -o-transition: all 0.4s ease; 
+		 transition: all 0.4s ease; 
+     }
+     #safety:hover{
+         background-color: #009688;
+     }
+     #attr{
+         background-color: #81C784;
+         -webkit-transition: all 0.4s ease;
+ 		 -moz-transition: all 0.4s ease; 
+		 -ms-transition: all 0.4s ease; 
+		 -o-transition: all 0.4s ease; 
+		 transition: all 0.4s ease; 
+     }
+     #attr:hover{
+         background-color: #4CAF50;
+     }
+     #hp{
+         background-color: #DCE775;
+         -webkit-transition: all 0.4s ease;
+ 		 -moz-transition: all 0.4s ease; 
+		 -ms-transition: all 0.4s ease; 
+		 -o-transition: all 0.4s ease; 
+		 transition: all 0.4s ease; 
+     }
+     #hp:hover{
+         background-color: #CDDC39;
+     }
+     #awards{
+         background-color: #ff8a65;
+         -webkit-transition: all 0.4s ease;
+ 		 -moz-transition: all 0.4s ease; 
+		 -ms-transition: all 0.4s ease; 
+		 -o-transition: all 0.4s ease; 
+		 transition: all 0.4s ease; 
+     }
+     #awards:hover{
+         background-color: #FF5722;
+     }
+
+     /********************************* ADDED BY DANIEL ********************************/
+
+     .divider {
+         height: 1px;
+         width: 100%;
+         overflow: hidden;
+         background-color: #e0e0e0;
+     }
+     #source{
+         text-decoration: underline;
+         color: #ffffff !Important;
+         background-color: #009688;
+         -webkit-transition: all 0.4s ease;
+ 		 -moz-transition: all 0.4s ease; 
+		 -ms-transition: all 0.4s ease; 
+		 -o-transition: all 0.4s ease; 
+		 transition: all 0.4s ease; 
+     }
+     #source:hover{
+         background-color: #009688;
+         color: #F5F5F5 !Importaant;
+     }
+
+     h1{
+         font-size: 30px;
+     }
+     h3{
+         font-size: 24px;
+         z-index: 50;
+     }
+     h5{
+         font-family: "Roboto", Tahoma, sans-serif;
+         font-size:20px;
+     }
+     p{
+         font-family: "Roboto", Tahoma, sans-serif;
+     }
+     body{
+         position: relative;
+         width: 100%;
+         min-height: 100%;
+         font-family: "Roboto", Tahoma, sans-serif;
+     }
+     #totop{
+         color: #ffffff;
+         cursor: pointer;
+         background-color: transparent;
+         margin-right: 40px;
+         float: right;
+         width: 6%;
+         height: 65px;
+         border: 0px;
+         text-align: center;
+         line-height: 65px;
+         -webkit-transition: all 0.4s ease; 
+		 -moz-transition: all 0.4s ease; 
+		 -ms-transition: all 0.4s ease; 
+		 -o-transition: all 0.4s ease; transition: all 0.4s ease; 
+     }
+     #totop:hover{
+         background-color: #00796B;
+         -webkit-transition: all 0.4s ease; 
+		 -moz-transition: all 0.4s ease; 
+		 -ms-transition: all 0.4s ease; 
+		 -o-transition: all 0.4s ease; transition: all 0.4s ease; 
+     }
+     #totop:active{
+         background-color: #00695C;
+         -webkit-transition: all 0.2s ease; 
+		 -moz-transition: all 0.2s ease; 
+		 -ms-transition: all 0.2s ease; 
+		 -o-transition: all 0.2s ease;
+                 transition: all 0.2s ease; 
+     }
+
+     /********************************* RESPONSIVE STYLING ********************************/
+
+	 /* IF THE SCREEN IS LESS THAN 1000PX */
+
+	 @media only screen and (max-width: 1000px) {
+
+		 #content {width:100%; }
+		 .menu_wrapper {width:15%;}
+		 .content_wrapper {margin-left: 15%;}
+		 .menu_item {display:block;}
+		 .icon {display:none;}
+		 .highlight {padding:10px 0px;}
+	 }
+
+
+	 /* IF THE SCREEN IS LESS THAN 680PX */
+
+	 @media only screen and (max-width: 680px) {
+		 .collapsable_menu_control { display:block;}
+		 .menu_item {display:none;}
+		 .menu_wrapper { width:100%; height: 15%; position:relative;}
+		 .content_wrapper {width:100%; margin-left:0px;}
+		 .column.half_size {width:100%; }fanke
+		 .column img { width: 100%; padding: 5px 0px;}
+		 .icon {display:block;}
+		 .highlight {padding:15px 5px;}
+	 }
+
+    </style>
+
+
+
+    <!--- THIS IS WHERE THE HTML BEGINS --->
+
+
+    <!-- This tells the browser that your page is responsive -->
+
+
+    <head> 
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+
+
+
+        <div id="whole_wrapper">
+
+            <div id="footbar" >
+                <div id="menu_button" title = "Menu"><img src="http://2016.igem.org/wiki/images/5/5b/T--BNDS_China--menubutton.png" /></div>
+                <div class="footbar_item" id="title_div"><a id="title">BNDS China</a></div>
+                <div class="footbar_item" id="placeholder"></div>
+                <div id="totop" title = "Back to the top!">
+                    <a>
+                    <img style="padding-top:5px; padding-bottom:5px; padding-left:18px; padding-right:18px;" src="http://2016.igem.org/wiki/images/a/a4/T--BNDS_China--top.png" />
+                    </a>
+                </div>
+            </div>
+
+            
+            <div class="menu_wrapper" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+                <div id="footbar" >
+                    <div class="footbar_item">2016 iGEM</div>
+                </div>
+
+
+	            <div class="collapsable_menu_control"> MENU ▤ </div>
+
+	            <ul id="accordion" class="accordion">
+                    
+                    <li style="list-style: none;"><div id="logo"><img src="http://2016.igem.org/wiki/images/1/16/T--BNDS_China--colorlogo.png" /></div></li>
+
+		            <li class="menu_item" id="home"><img src="http://2016.igem.org/wiki/images/e/ed/T--BNDS_China--home.png" /><a href="http://2016.igem.org/Team:BNDS_China"> HOME </a> </li>
+
+
+                    <li class="menu_item" id="team" class="my_menu_item"> <div class="icon plus"></div><img src="http://2016.igem.org/wiki/images/6/60/T--BNDS_China--team.png" /> <a> TEAM</a>
+			            <ul class="submenu"> 
+				            <li> <a style="background-color: #F48FB1;" href=" http://2016.igem.org/Team:BNDS_China/Team"> Team   </a> </li>
+				            <li> <a style="background-color: #F48FB1;" href="http://2016.igem.org/Team:BNDS_China/Collaborations"> Collaborations </a> </li>
+                    	</ul>
+                    </li>
+
+                    <li class="menu_item" id="project" class="my_menu_item"> <div class="icon plus"></div><img src="http://2016.igem.org/wiki/images/1/16/T--BNDS_China--project.png" /><a> PROJECT</a>
+			            <ul class="submenu">
+				            <!--li> <a style="background-color: #B39DDB;" href="http://2016.igem.org/Team:BNDS_China/Description"> Background </a></li-->
+				            <li> <a style="background-color: #B39DDB;" href="http://2016.igem.org/Team:BNDS_China/Design"> Design </a></li>
+				            <li> <a style="background-color: #B39DDB;" href="http://2016.igem.org/Team:BNDS_China/Experiments"> Experiments </a></li>
+				            <li> <a style="background-color: #B39DDB;" href="http://2016.igem.org/Team:BNDS_China/Proof"> Proof of Concept </a></li>
+				            <!--li> <a style="background-color: #B39DDB;" href="http://2016.igem.org/Team:BNDS_China/Demonstrate"> Demonstrate </a></li-->
+				            <li> <a style="background-color: #B39DDB;" href="http://2016.igem.org/Team:BNDS_China/Results"> Results </a></li>
+				            <li> <a style="background-color: #B39DDB;" href="http://2016.igem.org/Team:BNDS_China/Notebook"> Notebook </a></li>
+                    	</ul>
+                    </li>
+
+                    <li class="menu_item" id="parts" class="my_menu_item"> <div class="icon plus"></div><img src="http://2016.igem.org/wiki/images/1/13/T--BNDS_China--parts.png" /><a> PARTS</a>  
+			            <ul class="submenu">
+				            <li> <a style="background-color: #90CAF9;" href="http://2016.igem.org/Team:BNDS_China/Parts">Parts </a></li>
+				            <li> <a style="background-color: #90CAF9;" href="http://2016.igem.org/Team:BNDS_China/Basic_Part"> Basic Parts </a></li>
+				            <!--li> <a style="background-color: #90CAF9;" href="http://2016.igem.org/Team:BNDS_China/Composite_Part"> Composite Parts </a></li-->
+				            <!--li> <a style="background-color: #90CAF9;" href="http://2016.igem.org/Team:BNDS_China/Part_Collection"> Part Collection </a></li-->
+                    	</ul>
+                    </li>
+
+
+		            <li class="menu_item" id="safety" class="my_menu_item"><img src="http://2016.igem.org/wiki/images/e/e1/T--BNDS_China--safety.png" /><a href="http://2016.igem.org/Team:BNDS_China/Safety"> SAFETY </a> </li>
+
+
+		            <li class="menu_item" id="attr" class="my_menu_item"><img src="http://2016.igem.org/wiki/images/e/e0/T--BNDS_China--attribution.png" /><a href="http://2016.igem.org/Team:BNDS_China/Attributions"> ATTRIBUTIONS </a></li>
+
+
+                    <li class="menu_item" id="hp" class="my_menu_item"> <div class="icon plus"></div><img src="http://2016.igem.org/wiki/images/2/23/T--BNDS_China--humanpractice.png" /> <a> HUMAN PRACTICE</a>
+			            <ul class="submenu">
+				            <li> <a style="background-color: #E6EE9C;" href="http://2016.igem.org/Team:BNDS_China/Human_Practices"> Human Practices </a></li>
+				            <li> <a style="background-color: #E6EE9C;" href="http://2016.igem.org/Team:BNDS_China/HP/Silver"> Silver </a></li>
+				            <!--li> <a style="background-color: #E6EE9C;" href="http://2016.igem.org/Team:BNDS_China/HP/Gold"> Gold </a></li-->
+				            <!--li> <a style="background-color: #E6EE9C;" href="http://2016.igem.org/Team:BNDS_China/Integrated_Practices"> Integrated Practices </a></li-->
+				            <!--li> <a style="background-color: #E6EE9C;" href="http://2016.igem.org/Team:BNDS_China/Engagement"> Engagement </a></li-->
+                    	</ul>
+                    </li>
+
+
+                    <li class="menu_item" id="awards" class="my_menu_item" > <div class="icon plus"></div><img src="http://2016.igem.org/wiki/images/b/bc/T--BNDS_China--awards.png" /><a> AWARDS</a> 
+			            <ul class="submenu">
+				            <!--li><a style="background-color: #FFAB91;" href="http://2016.igem.org/Team:BNDS_China/Entrepreneurship"> Entrepreneurship </a></li-->
+				            <!--li> <a style="background-color: #FFAB91;" href="http://2016.igem.org/Team:BNDS_China/Hardware"> Hardware </a></li-->
+				            <!--li> <a style="background-color: #FFAB91;" href="http://2016.igem.org/Team:BNDS_China/Software"> Software </a></li-->
+				            <!--li> <a style="background-color: #FFAB91;" href="http://2016.igem.org/Team:BNDS_China/Measurement"> Measurement </a></li-->
+				            <!--li> <a style="background-color: #FFAB91;" href="http://2016.igem.org/Team:BNDS_China/Model"> Model </a></li-->
+				            <li> <a style="background-color: #FFAB91;">We are not doing this section yet. :)</a></li>
+                    	</ul>
+                    </li>
+	            </ul>
+
+            </div>
+
+            <div id="ca2" class="ca" title = "Ca++ ion!! Click to expand or collapse menu.">
+                <img src="http://2016.igem.org/wiki/images/thumb/7/7d/T--BNDS_China--Ca3l.png/251px-T--BNDS_China--Ca3l.png" alt="Click to stop!" />
+            </div>
+
+        </div>
+
+    </body>
+
+    <!--FOOTER-->
+
+    <footer id="footer">
+        <div class="column half_size">
+            <h5 class="white-text" style="1.5em; text-align:left; margin-left: 120px; font-size: 18px; color:white">License</h5>
+            <p style="text-align:left; margin-left: 120px; font-size: 16px; color:white">This wiki used modified Material Design by Google©, Licensed under an Apache-2 License. Some icons were created by ©Icons8 LLC, Licensed under a Creative Commons Attribution-NoDerivs 3.0 Unported license.</p>
+        </div>
+
+        <div class="column half_size">
+            <h5 class="white-text" style="margin-left:120px; text-align:left; font-size: 18px; color:white">Links</h5>
+            <ul style="line-height:2.5em">
+                <li><a style= "margin-left:120px; float:left; text-align:left; font-size:18px; color:white" href="www.bnds.cn">Beijing National Day School</a></li></br>
+                <li><a style= "margin-left:120px; float:left; text-align:left; font-size:18px; color:white" href="igem.org">iGem Homepage</a></li></br>
+                <li><a style= "margin-left:120px; float:left; text-align:left; font-size:18px; color:white" href="icons8.com">Icon source: icons8.com</a></li></br>
+                <li><a style= "margin-left:120px; float:left; text-align:left; font-size:18px; color:white" href="design.google.com">Material Design by Google©</a></li>
+            </ul>
+        </div>
+
+        <div class="column half_size" style="text-align:left; margin-left:120px; margin-top:-20px; font-size:18px; color:#E0E0E0">
+            © 2016 BNDS China
+        </div>
+    </footer>
+
+
+
+
+
+
+    <script>
+     function drag(event){
+         event.dataTransfer.setDate("Text",ev.target.id);
+     }
+    </script>
+
+
+    <script type="text/javascript">
+     function drag(ev)
+     {
+         ev.dataTransfer.setData("Text",ev.target.id);
+     }
+
+     function allowDrop(ev)
+     {
+         ev.preventDefault();
+     }
+
+     function drop(ev){
+         ev.preventDefault();
+         var data = ev.dataTransfer.getData("Text");
+         ev.target.appendChild(document.getElementById(data));
+     }
+    </script>
+
+    <div class="content_wrapper" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+        
+        <!--
+        <h1 id="team_name">  </h1>
+        <h4 id="page_name">  </h4>
+        -->
+
+
+        <!-- ADDED BY DANIEL--> 
+
+
+
+        <script>
+
+         // This is the jquery part of your template.  Try not modify any of this code since it makes your menu work.
+
+	     $(document).ready(function() {
+
+             function init(){
+                 setInterval(up,1000);
+             }
+
+             var test = false;
+             function up(){
+                 if(test){
+                     $('#ca2').animate({bottom:'+=80px'});
+                     $('#ca2').animate({bottom:'-=80px'});
+                 }
+                 else{
+                     $('#ca2').animate({bottom:'+=0px'});
+                 }
+             }
+
+             var a = true;
+             $('#ca2').click(function() {
+                 $('#menu_button').click();
+             });
+             $('.ca').hover(function(){
+                 if(a){
+                     test = true;
+                 }
+                 else{
+                     test = false;
+                 }
+                 a = !a;
+             });
+
+             $('#ca2').click(function(){
+                 $('#ca2').animate({bottom:'+=0px'});
+
+             });
+             
+             init();
+
+             var isHiden = true;
+             $('#menu_button').click(function(){
+                 if(isHiden){
+                     $('.menu_wrapper').animate({left:'+=250px'});
+                 }
+                 else{
+                     $('.menu_wrapper').animate({left:'-=250px'}); 
+                 }
+                 isHiden = !isHiden;
+             });
+             
+             $("#totop").click(function() {
+                $('html, body').animate({
+                    scrollTop: '0px'
+                }, 1000);
+            });
+             
+             $('#todb').click(function(){$('html,body').animate({scrollTop:$('#db').offset().top}, 600);});
+             $('#todxm').click(function(){$('html,body').animate({scrollTop:$('#dxm').offset().top}, 600);});
+             $('#toyxl').click(function(){$('html,body').animate({scrollTop:$('#yxl').offset().top}, 600);});
+             $('#tohzx').click(function(){$('html,body').animate({scrollTop:$('#hzx').offset().top}, 600);});
+             $('#togyw').click(function(){$('html,body').animate({scrollTop:$('#gyw').offset().top}, 600);});
+             $('#tolyp').click(function(){$('html,body').animate({scrollTop:$('#lyp').offset().top}, 600);});
+             $('#tolx').click(function(){$('html,body').animate({scrollTop:$('#lx').offset().top}, 600);});
+             $('#towly').click(function(){$('html,body').animate({scrollTop:$('#wly').offset().top}, 600);});
+             $('#towzq').click(function(){$('html,body').animate({scrollTop:$('#wzq').offset().top}, 600);});
+             $('#toxyy').click(function(){$('html,body').animate({scrollTop:$('#xyy').offset().top}, 600);});
+             $('#toxhl').click(function(){$('html,body').animate({scrollTop:$('#xhl').offset().top}, 600);});
+             $('#toyyf').click(function(){$('html,body').animate({scrollTop:$('#yyf').offset().top}, 600);});
+             $('#toyh').click(function(){$('html,body').animate({scrollTop:$('#yh').offset().top}, 600);});
+             $('#tozyx').click(function(){$('html,body').animate({scrollTop:$('#zyx').offset().top}, 600);});
+             $('#toztl').click(function(){$('html,body').animate({scrollTop:$('#ztl').offset().top}, 600);});
+             $('#togs').click(function(){$('html,body').animate({scrollTop:$('#gs').offset().top}, 600);});
+             $('#tots').click(function(){$('html,body').animate({scrollTop:$('#ts').offset().top}, 600);});
+             $('#topas').click(function(){$('html,body').animate({scrollTop:$('#pas').offset().top}, 600);});
+             $('#tols').click(function(){$('html,body').animate({scrollTop:$('#ls').offset().top}, 600);});
+             $('#tofha').click(function(){$('html,body').animate({scrollTop:$('#fha').offset().top}, 600);});
+             $('#topsa').click(function(){$('html,body').animate({scrollTop:$('#psa').offset().top}, 600);});
+             $('#tows').click(function(){$('html,body').animate({scrollTop:$('#ws').offset().top}, 600);});
+             $('#topc').click(function(){$('html,body').animate({scrollTop:$('#pc').offset().top}, 600);});
+             $('#tohps').click(function(){$('html,body').animate({scrollTop:$('#hps').offset().top}, 600);});
+             $('#tosld').click(function(){$('html,body').animate({scrollTop:$('#sld').offset().top}, 600);});
+             $('#tospd').click(function(){$('html,body').animate({scrollTop:$('#spd').offset().top}, 600);});
+             $('#tobhu').click(function(){$('html,body').animate({scrollTop:$('#bhu').offset().top}, 600);});
+             $('#tosdsz').click(function(){$('html,body').animate({scrollTop:$('#sdsz').offset().top}, 600);});
+             $('#toucas').click(function(){$('html,body').animate({scrollTop:$('#ucas').offset().top}, 600);});
+             $('#tociei').click(function(){$('html,body').animate({scrollTop:$('#ciei').offset().top}, 600);});
+             $('#toi').click(function(){$('html,body').animate({scrollTop:$('#i').offset().top}, 600);});
+             $('#toii').click(function(){$('html,body').animate({scrollTop:$('#ii').offset().top}, 600);});
+             $('#toiii').click(function(){$('html,body').animate({scrollTop:$('#iii').offset().top}, 600);});
+             $('#toiv').click(function(){$('html,body').animate({scrollTop:$('#iv').offset().top}, 600);});
+             $('#tov').click(function(){$('html,body').animate({scrollTop:$('#v').offset().top}, 600);});
+             $('#tovi').click(function(){$('html,body').animate({scrollTop:$('#vi').offset().top}, 600);});
+             $('#tovii').click(function(){$('html,body').animate({scrollTop:$('#vii').offset().top}, 600);});
+             $('#toviii').click(function(){$('html,body').animate({scrollTop:$('#viii').offset().top}, 600);});
+             $('#toix').click(function(){$('html,body').animate({scrollTop:$('#ix').offset().top}, 600);});
+             $('#tox').click(function(){$('html,body').animate({scrollTop:$('#x').offset().top}, 600);});
+             $('#toxi').click(function(){$('html,body').animate({scrollTop:$('#xi').offset().top}, 600);});
+             $('#tost').click(function(){$('html,body').animate({scrollTop:$('#st').offset().top}, 600);});
+             $('#tofpia').click(function(){$('html,body').animate({scrollTop:$('#fpia').offset().top}, 600);});
+             $('#todp').click(function(){$('html,body').animate({scrollTop:$('#dp').offset().top}, 600);});
+             $('#toce').click(function(){$('html,body').animate({scrollTop:$('#ce').offset().top}, 600);});
+             $('#towd').click(function(){$('html,body').animate({scrollTop:$('#wd').offset().top}, 600);});
+             $('#toth').click(function(){$('html,body').animate({scrollTop:$('#th').offset().top}, 600);});
+             $('#tocollab').click(function(){$('html,body').animate({scrollTop:$('#collab').offset().top}, 600);});
+             $('#tohq').click(function(){$('html,body').animate({scrollTop:$('#hq').offset().top}, 600);});
+             $('#toff').click(function(){$('html,body').animate({scrollTop:$('#ff').offset().top}, 600);});
+             $('#tofs').click(function(){$('html,body').animate({scrollTop:$('#fs').offset().top}, 600);});
+             $('#tocrowdfunding').click(function(){$('html,body').animate({scrollTop:$('#crowdfunding').offset().top}, 600);});
+             $('#toehi').click(function(){$('html,body').animate({scrollTop:$('#ehi').offset().top}, 600);});
+             $('#tosei').click(function(){$('html,body').animate({scrollTop:$('#sei').offset().top}, 600);});
+
+		     $("#HQ_page").attr('id','');
+		     
+
+		     if ( wgPageName.substring( 0,  8) == "Template")  {   // if the page is a template it displays the full name in a single line
+			     $("#team_name").html( wgPageName ); 
+		     }
+
+		     else if (  ( (wgPageName.match(/\//g) || []).length ) == 0 ) {  // if it is the home page , just print the team's name
+			     $("#team_name").html( wgPageName.substring( 5, wgPageName.length ) ); 
+		     }
+
+		     else {
+			     // this adds the team's name as an h1
+			     $("#team_name").html( wgPageName.substring( 5 , wgPageName.indexOf("/")  ) ); 
+
+			     // this adds the page's title as an h4	
+			     $("#page_name").html (     ( wgPageName.substring( wgPageName.indexOf("/") + 1, wgPageName.length ) ).replace( /\/|_/g , " ")  );
+		     }
+
+             if (wgPageName == "Team:BNDS_China"){
+                 document.getElementById("title").innerHTML = "BNDS China – Home";
+             }
+             else{
+                 var name = wgPageName.substring(16, wgPageName.length);
+                 var re = [/_/];
+                 name.replace(re, " ");
+                 var TrueName = "BNDS China – " + name;
+                 document.getElementById("title").innerHTML = TrueName;
+             }
+
+
+		     $('#accordion').find('.menu_item').click(function(){
+
+			     //Expand or collapse this panel
+			     submenu = $(this).find('.submenu');
+			     submenu.toggle();
+
+			     icon = $(this).find('.icon');
+
+			     if ( !$( submenu ).is(':visible') ) {
+				     icon.removeClass("less").addClass("plus");
+			     }
+			     else {
+				     icon.removeClass("plus").addClass("less");
+			     }
+             });
+             
+		     $(".collapsable_menu_control").click(function() {	
+			                                                  $(".menu_item").toggle();
+		                                                      });
+
+		     $( window ).resize(function() {
+			     $(".menu_item").show();
+		     });
+
+             
+
+
+	     });
+
+         /********************** ADDED BY DANIEL ************************/
+
+
+
+        </script>
+
+
+
+</html>

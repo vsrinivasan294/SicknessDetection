@@ -100,6 +100,18 @@
         $('#topics').click(function(){document.getElementById("pics").scrollIntoView()});
         $('#toetc').click(function(){document.getElementById("etc").scrollIntoView()});
 				$('#totop').click(function(){$(document.body).scrollTop(0)});
+				var isChanged = false;
+				$('#execute_hiv').click(function() {
+					if (isChanged == false) {
+						document.getElementById('execute_hiv').innerHTML = "Show Original Image";
+						document.getElementById('hiv_img').src = "static/images/demo/HIVfound.png";
+						isChanged = true;
+					} else {
+						document.getElementById('execute_hiv').innerHTML = "Execute Algorithm";
+						document.getElementById('hiv_img').src = "static/images/demo/HIV.jpg";
+						isChanged = false;
+					}
+				});
 			});
 		</script>
   </body>
