@@ -23,13 +23,8 @@ posts = [
 
 @app.route("/")
 def main():
-<<<<<<< HEAD
 	return render_template('main.html', title='Main')
-	
-=======
-		return render_template('main.html', title='Main')
 
->>>>>>> 042c89388859e6d014b8e134a1330bc1f95bd626
 @app.route("/home")
 def home():
     return render_template('home.html', posts=posts)
