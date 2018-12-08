@@ -14,7 +14,7 @@ Vishnu -- Did some work on the Flask website, more work on training models and t
 
 Parth -- Working on the image recognition models and also built a Luekemia and neutrophilia recognition model 
 
-Ameya -- Assisted Jason on the flask website with UI development and worked on training models with databases from Kaggle.  
+Ameya -- Assisted Jason on the flask website with UI development and worked on training models.  
 
 
 We also had a lot of learning and tutorials we looked at before doing this. The Branches that has what everyone did are also present 
