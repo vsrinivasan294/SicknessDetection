@@ -27,7 +27,8 @@ def main():
 
 @app.route("/home")
 def home():
-    return render_template('home.html', posts=posts)
+    image_file = url_for('static', filename='images/blood_samples/' + current_user.image_file)
+    return render_template('home.html', image_file=image_file)
 
 @app.route("/about")
 def about():
