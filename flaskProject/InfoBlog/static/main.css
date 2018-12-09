@@ -201,3 +201,14 @@ a.article-title:hover {
   font-size: 16px;
   cursor: pointer;
 }
+.rect {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: -1000px;
+    top: -1000px;
+  }
+.dg.ac {
+  z-index: 100 !important;
+  top: 50px !important;
+}
