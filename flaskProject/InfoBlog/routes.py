@@ -27,8 +27,15 @@ def main():
 
 @app.route("/home")
 def home():
-    image_file = url_for('static', filename='images/blood_samples/' + current_user.image_file)
-    return render_template('home.html', image_file=image_file)
+    if current_user.is_authenticated:
+        if current_user.image_file == "default.jpg":
+            image_file = url_for('static', filename='images/demo/insertHere.PNG')
+        else:
+            image_file = url_for('static', filename='images/blood_samples/' + current_user.image_file)
+        return render_template('home.html', image_file=image_file)
+    else:
+        image_file = url_for('static', filename='images/demo/insertHere.PNG')
+        return render_template('home.html', image_file=image_file)
 
 @app.route("/about")
 def about():
