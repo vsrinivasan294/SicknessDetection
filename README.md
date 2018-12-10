@@ -9,7 +9,7 @@ Luis -- Built the initial Flask website and also finished a image recognition mo
 Jason -- Built on what Luis had for the flask website, cleaned the UI up and also build an image recognition model for a disease 
 
 
-Vishnu -- Did some work on the Flask website, more work on training models and testing image recogniton models, build a malaria, blood cell count and also lymphocyte counting model. 
+Vishnu -- Did some work on the Flask website, more work on training models and testing image recogniton models, build a malaria, blood cell count and also lymphocyte counting model. Also worked on implementing tracking.js as a viable option for the online blood testing/image recognition software for input images.
 
 
 Parth -- Working on the image recognition models and also built a Luekemia and neutrophilia recognition model 
