@@ -119,6 +119,28 @@
 						isChanged = false;
 					}
 				});
+				$('#execute_malaria').click(function() {
+					if (isChanged == false) {
+						document.getElementById('execute_malaria').innerHTML = "Show Original Image";
+						document.getElementById('malaria_img').src = "static/images/demo/Malariafound.png";
+						isChanged = true;
+					} else {
+						document.getElementById('execute_malaria').innerHTML = "Execute Algorithm";
+						document.getElementById('malaria_img').src = "static/images/demo/malaria.jpg";
+						isChanged = false;
+					}
+				});
+				$('#execute_sickle').click(function() {
+					if (isChanged == false) {
+						document.getElementById('execute_sickle').innerHTML = "Show Original Image";
+						document.getElementById('sickle_img').src = "static/images/demo/SickleCellfound.png";
+						isChanged = true;
+					} else {
+						document.getElementById('execute_sickle').innerHTML = "Execute Algorithm";
+						document.getElementById('sickle_img').src = "static/images/demo/sicklecell.jpg";
+						isChanged = false;
+					}
+				});
 			});
 		</script>
 	<script>
