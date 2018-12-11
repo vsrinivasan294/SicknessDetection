@@ -108,3 +108,7 @@ def malaria():
 @app.route("/Sickle-Information")
 def sickle():
     return render_template('sickle-Information.html', title='Information')
+
+@app.route("/Statistics")
+def stats():
+		return render_template('Statistics.html', title='Information')

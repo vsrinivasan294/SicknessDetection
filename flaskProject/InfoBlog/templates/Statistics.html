@@ -1,0 +1,35 @@
+{% extends "layout.html "%}
+{% block content %}
+  <h1>Statistics</h1>
+	<div class="menu_div">
+		<h5>Content</h5>
+		<ul>
+      <li><a id="toov">Overview</a></li>
+      <li><a id="toalg">Algorithms</a></li>
+      <li><a id="todata">Data and Analysis</a></li>
+      <li><a id="topics">Pictures</a></li>
+    </ul>
+	</div>
+	<div class="column full_size unit" id="ov">
+		<h1>Overview</h1>
+		<div style="height: 500px">Placeholder</div>
+	</div>
+	<div class="divider"></div>
+	<div class="column full_size unit" id="alg">
+		<h1>Algorithms</h1>
+		<div style="height: 500px">Placeholder</div>
+	</div>
+	<div class="divider"></div>
+	<div class="column full_size unit" id="data">
+		<h1>Data and Analysis</h1>
+		<div class="column half_size"><img src="static/images/demo/Data & Analysis.png"></div>
+		<div class="column half_size"><img src="static/images/demo/Data & Analysis 2.png"></div>
+	</div>
+	<div class="divider"></div>
+	<div class="column full_size unit" id="pics">
+		<h1>Pictures</h1>
+		<div class="column full_size"><img src="static/images/demo/sth.png"></div>
+		<div class="column full_size"><img src="static/images/demo/Picture.png"></div>
+	</div>
+	<div class="divider"></div>
+{% endblock content %}
