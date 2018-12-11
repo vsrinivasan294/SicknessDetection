@@ -36,7 +36,7 @@ class UpdateAccountForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(),
                             Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    picture = FileField('Upload Your Own Blood Sample', validators=[FileAllowed(['jpg', 'png'])])
+    picture = FileField('Change Your Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Update')
 
     def validate_username(self, username):
@@ -50,3 +50,7 @@ class UpdateAccountForm(FlaskForm):
             user = User.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError('An account associated with that email has already been created. Please choose another one.')
+
+class UpdateHomeForm(FlaskForm):
+    image = FileField('Upload Your Own Blood Sample!', validators=[FileAllowed(['jpg', 'png'])])
+    submit = SubmitField('Upload')

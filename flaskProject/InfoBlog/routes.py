@@ -2,40 +2,29 @@ import os
 import secrets
 from flask import render_template, url_for, flash, redirect, request
 from InfoBlog import app, db, bcrypt
-from InfoBlog.forms import RegistrationForm, LoginForm, UpdateAccountForm
-from InfoBlog.models import User, Post
+from InfoBlog.forms import RegistrationForm, LoginForm, UpdateAccountForm, UpdateHomeForm
+from InfoBlog.models import User
 from flask_login import login_user, current_user, logout_user, login_required
 
-posts = [
-    {
-        'author': 'Samarth Jain',
-        'title': 'Blog Post 1',
-        'content': 'hello, my name is Sam.',
-        'date_posted': 'October 18, 2018'
-    },
-    {
-    'author': 'Luis Rendon',
-    'title': 'Blog Post 2',
-    'content': 'Hello, this is my blog post.',
-    'date_posted': 'April 20, 2018'
-    }
-]
 
 @app.route("/")
 def main():
 	return render_template('main.html', title='Main')
 
-@app.route("/home")
+@app.route("/home", methods=['GET', 'POST'])
+@login_required
 def home():
-    if current_user.is_authenticated:
-        if current_user.image_file == "default.jpg":
-            image_file = url_for('static', filename='images/demo/insertHere.PNG')
-        else:
-            image_file = url_for('static', filename='images/blood_samples/' + current_user.image_file)
-        return render_template('home.html', image_file=image_file)
-    else:
-        image_file = url_for('static', filename='images/demo/insertHere.PNG')
-        return render_template('home.html', image_file=image_file)
+    form = UpdateHomeForm()
+    if form.validate_on_submit():
+        if form.image.data:
+            picture_file = save_picture(form.image.data)
+            current_user.home_image = picture_file
+        db.session.commit()
+        flash('Success! Check Out Your Results!', 'success')
+        return redirect(url_for('home'))
+
+    image_file = url_for('static', filename='images/blood_samples/' + current_user.home_image)
+    return render_template('home.html', title='Home', image_file=image_file, form=form)
 
 @app.route("/about")
 def about():
