@@ -141,6 +141,17 @@
 						isChanged = false;
 					}
 				});
+				$('#execute_leukemia').click(function() {
+					if (isChanged == false) {
+						document.getElementById('execute_leukemia').innerHTML = "Show Original Image";
+						document.getElementById('leukemia_img').src = "static/images/demo/Leukemiafound.png";
+						isChanged = true;
+					} else {
+						document.getElementById('execute_leukemia').innerHTML = "Execute Algorithm";
+						document.getElementById('leukemia_img').src = "static/images/demo/Leukemia.jpg";
+						isChanged = false;
+					}
+				});
 			});
 		</script>
 	<script>
